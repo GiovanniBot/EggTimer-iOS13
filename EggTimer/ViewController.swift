@@ -13,18 +13,16 @@ class ViewController: UIViewController {
     let eggTimes : [String: Int] = ["Soft": 5, "Medium": 7, "Hard": 12]
     
     @IBAction func hardnessSelected(_ sender: UIButton) {
-        let _ = sender.currentTitle
+        let hardness = sender.currentTitle!
+        let minutes = eggTimes[hardness]
+        var seconds = minutes! * 60
         
-        switch sender.currentTitle {
-        case "Soft":
-            print(eggTimes["Soft"])
-        case "Medium":
-            print(eggTimes["Medium"])
-        case "Hard":
-            print(eggTimes["Hard"])
-        default:
-            print("Error")
-        }
+        repeat {
+            print(seconds)
+            Thread.sleep(forTimeInterval: 1.0)
+            seconds -= 1
+        } while (seconds > 0);
+        
     }
 
 }
